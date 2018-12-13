@@ -12,4 +12,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  login(event) {
+      event.preventDefault
+      const eventtarget = event.target
+      console.log(eventtarget.email.value)
+  }
+
 }
