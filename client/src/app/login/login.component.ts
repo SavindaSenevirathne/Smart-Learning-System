@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService, TokenPayload } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,15 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  credentials: TokenPayload = {
+    email: '',
+    password: ''
+  };
 
-  ngOnInit() {
+  constructor(private auth: AuthenticationService, private router: Router) { }
+
+  login() {
+    // console.log(this.credentials);
+    this.auth.login(this.credentials).subscribe(() => {
+      this.router.navigateByUrl('/dashboard');
+    }, (err) => {
+      console.error(err);
+    });
+  }
+  
+  ngOnInit() { 
   }
 
-  login(event) {
-      event.preventDefault
-      const eventtarget = event.target
-      console.log(eventtarget.email.value)
-  }
 
 }

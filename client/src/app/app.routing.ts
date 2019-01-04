@@ -9,6 +9,8 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
+import { AuthGuardService } from "./auth-guard.service";
+
 const routes: Routes =[
   {
     path: '',
@@ -24,7 +26,7 @@ const routes: Routes =[
         {
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-    }]
+      }], canActivate: [AuthGuardService]
   },
   {
     path: 'login',

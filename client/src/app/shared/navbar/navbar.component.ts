@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { AuthenticationService, TokenPayload } from '../../../app/authentication.service';
+
 
 @Component({
     // moduleId: module.id,
@@ -14,15 +16,19 @@ export class NavbarComponent implements OnInit{
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(location: Location,  private element: ElementRef) {
-      this.location = location;
-          this.sidebarVisible = false;
+    constructor(location: Location, private element: ElementRef, private auth: AuthenticationService) {
+        this.location = location;
+        this.sidebarVisible = false;
     }
 
     ngOnInit(){
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
+    }
+
+    logout() {
+        this.auth.logout();
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;

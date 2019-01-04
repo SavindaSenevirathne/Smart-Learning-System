@@ -32,13 +32,13 @@
           <img src="../../assets/img/img-01.png" alt="IMG">
         </div>
 
-        <form class="login100-form validate-form" (submit) = "register($event)">
+        <form class="login100-form validate-form" (submit) = "register()">
           <span class="login100-form-title">
             Member Registration
           </span>
 
           <div class="wrap-input100 validate-input" data-validate="Valid name is required">
-            <input class="input100" type="text" name="name" placeholder="Name">
+            <input class="input100" type="text" name="name" placeholder="Name" [(ngModel)]="credentials.name">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-user" aria-hidden="true"></i>
@@ -46,7 +46,7 @@
           </div>
 
           <div class="wrap-input100 validate-input" data-validate="Valid registration number is required">
-            <input class="input100" type="text" name="regNo" placeholder="Reg. No">
+            <input class="input100" type="text" name="regNo" placeholder="Reg. No" [(ngModel)]="credentials.regNo">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-calculator" aria-hidden="true"></i>
@@ -54,7 +54,7 @@
           </div>
 
           <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-            <input class="input100" type="text" name="email" placeholder="Email">
+            <input class="input100" type="text" name="email" placeholder="Email" [(ngModel)]="credentials.email">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -62,7 +62,7 @@
           </div>
 
           <div class="wrap-input100 validate-input" data-validate="Password is required">
-            <input class="input100" type="password" name="pass" placeholder="Password">
+            <input class="input100" type="password" name="password" placeholder="Password" [(ngModel)]="credentials.password">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-lock" aria-hidden="true"></i>
