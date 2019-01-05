@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,7 @@ import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 })
 export class AppComponent implements OnInit {
 
-     constructor(public location: Location) {}
+  constructor(public location: Location, public auth: AuthenticationService) {}
 
     ngOnInit(){
     }
