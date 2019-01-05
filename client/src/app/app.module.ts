@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component'
 
 import { AuthGuardService } from './auth-guard.service' //middleware for secure routes
+import { NotificationService } from './notification.service'
 
 @NgModule({
   imports: [
@@ -38,7 +39,7 @@ import { AuthGuardService } from './auth-guard.service' //middleware for secure 
     LoginComponent,
     RegisterComponent
   ],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
