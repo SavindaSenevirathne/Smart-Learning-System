@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, TokenPayload } from '../authentication.service';
 import { Router } from '@angular/router';
+import { NotificationService } from 'app/notification.service';
 
 @Component({
   selector: 'app-register',
@@ -11,18 +12,20 @@ export class RegisterComponent implements OnInit {
 
   credentials: TokenPayload = {
     email: '',
-    name: '',
+    fname: '',
+    lname: '',
     regNo: '',
     password: ''
   };
 
-  constructor(private auth: AuthenticationService, private router: Router) { }
+  constructor(private auth: AuthenticationService, private router: Router, private notify: NotificationService) { }
 
   ngOnInit() {
   }
 
   register() {
     this.auth.register(this.credentials).subscribe(() => {
+      this.notify.showNotification('success', 'Successfully Registered');
       this.router.navigateByUrl('/dashboard');
     }, (err) => {
       console.error(err);

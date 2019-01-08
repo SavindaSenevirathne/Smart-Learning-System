@@ -22,6 +22,7 @@ router.post('/api/register', Authentication.register);
 
 //Secure routes
 router.get('/api/profile',auth, profileControl.profileRead);
+router.post('/api/update',auth, Authentication.update);
 
 
 module.exports = router;

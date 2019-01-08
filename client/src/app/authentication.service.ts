@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { Router } from '@angular/router';
@@ -8,8 +7,12 @@ import { HttpClient } from '@angular/common/http';
 export interface UserDetails {
   _id: string;
   email: string;
-  name: string;
+  fname: string;
+  lname: string;
   regNo: string;
+  address?: string;
+  password: string;
+  profileImg?: string;
   exp: number;
   iat: number;
 }
@@ -22,7 +25,8 @@ export interface TokenPayload {
   email: string;
   password: string;
   regNo?: string;
-  name?: string;
+  fname?: string;
+  lname?: string;
 }
 
 @Injectable({
@@ -94,14 +98,30 @@ export class AuthenticationService {
   }
 
   public register(user: TokenPayload): Observable<any> {
-    console.log('Reg user = ', user);   
+    console.log('Reg user = ', user);
     return this.request('post', 'register', user);
   }
 
   public login(user: TokenPayload): Observable<any> {
     console.log('login invoked');
-    console.log('login user = ',user);   
     return this.request('post', 'login', user);
+  }
+
+  public update(user: UserDetails): Observable<any>{
+    let base;
+    console.log(user)
+    base = this.http.post(`/api/update`, user, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
   }
 
   public profile(): Observable<any> {

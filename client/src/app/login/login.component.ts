@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, TokenPayload } from '../authentication.service';
 import { Router } from '@angular/router';
 
-import { NotificationService } from "../notification.service";
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-login',
@@ -21,15 +21,14 @@ export class LoginComponent implements OnInit {
   login() {
     // console.log(this.credentials);
     this.auth.login(this.credentials).subscribe(() => {
-      this.notify.showNotification('success','right');
+      this.notify.showNotification('success', 'Successfully Logged In');
       this.router.navigateByUrl('/dashboard');
     }, (err) => {
       console.error(err);
     });
   }
-  
-  ngOnInit() { 
-  }
+
+  ngOnInit() {}
 
 
 }

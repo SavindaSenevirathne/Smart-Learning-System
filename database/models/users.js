@@ -8,13 +8,26 @@ var userSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-  name: {
+  fname: {
+    type: String,
+    required: true
+  },
+  lname: {
     type: String,
     required: true
   },
   regNo:{
     type: String,
     required: true
+  },
+  address:{
+    type: String,
+    required: false
+  },
+  profileImg:{
+    type: String,
+    default: 'assets/img/faces/default.png',
+    required: false
   },
   hash: String,
   salt: String
@@ -41,7 +54,9 @@ userSchema.methods.generateJwt = function () {
   return jwt.sign({
     _id: this._id,
     email: this.email,
-    name: this.name,
+    fname: this.fname,
+    lname: this.lname,
+    regNo: this.regNo,
     exp: parseInt(expiry.getTime() / 1000),
   }, "MY_SECRET"); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };

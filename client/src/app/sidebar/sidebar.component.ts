@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../authentication.service';
 import { Component, OnInit } from '@angular/core';
 
 declare const $: any;
@@ -25,7 +26,7 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() { }
+  constructor(private auth:AuthenticationService) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -36,4 +37,8 @@ export class SidebarComponent implements OnInit {
       }
       return true;
   };
+
+    logout() {
+        this.auth.logout();
+    }
 }
