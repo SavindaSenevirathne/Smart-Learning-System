@@ -12,7 +12,7 @@ import { NotificationService } from '../notification.service';
 export class LoginComponent implements OnInit {
 
   credentials: TokenPayload = {
-    email: '',
+    regNo: '',
     password: ''
   };
 

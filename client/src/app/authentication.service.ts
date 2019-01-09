@@ -22,9 +22,9 @@ interface TokenResponse {
 }
 
 export interface TokenPayload {
-  email: string;
+  email?: string;
   password: string;
-  regNo?: string;
+  regNo: string;
   fname?: string;
   lname?: string;
 }

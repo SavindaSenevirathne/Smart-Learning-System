@@ -9,24 +9,22 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
-import { AuthGuardService } from "./auth-guard.service";
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes =[
   {
     path: '',
     component: LandingComponent
-    // redirectTo: 'dashboard',
-    // pathMatch: 'full',
   }, 
   {
     path: '',
-    // redirectTo: 'dashboard'
     component: AdminLayoutComponent,
     children: [
         {
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-      }], canActivate: [AuthGuardService]
+      }],
+      canActivate: [AuthGuardService]
   },
   {
     path: 'login',
@@ -36,22 +34,7 @@ const routes: Routes =[
     path: 'register',
     component: RegisterComponent
   }
-  // {
-  //   path : 'login',
-  //   component : LoginComponent
-  // },
-  // {
-  //   path: 'dashboard',
-  //   component: AdminLayoutComponent,
-  //   children: [
-  //       {
-  //     path: '',
-  //     loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-  // }]},
-  // {
-  //   path: '',
-  //   component : LandingComponent
-  // }
+
 ];
 
 @NgModule({
