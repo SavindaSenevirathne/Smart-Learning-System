@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component'
 
 import { AuthGuardService } from './auth-guard.service' //middleware for secure routes
 import { NotificationService } from './notification.service'
+import { RoleGuardService } from './role-guard.service';
 
 @NgModule({
   imports: [
@@ -39,7 +40,7 @@ import { NotificationService } from './notification.service'
     LoginComponent,
     RegisterComponent
   ],
-  providers: [AuthGuardService, NotificationService],
+  providers: [AuthGuardService, NotificationService, RoleGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

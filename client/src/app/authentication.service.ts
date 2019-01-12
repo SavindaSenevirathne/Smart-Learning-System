@@ -10,6 +10,7 @@ export interface UserDetails {
   fname: string;
   lname: string;
   regNo: string;
+  role: string;
   address?: string;
   password: string;
   profileImg?: string;
@@ -25,6 +26,7 @@ export interface TokenPayload {
   email?: string;
   password: string;
   regNo: string;
+  role: string;
   fname?: string;
   lname?: string;
 }
@@ -76,6 +78,15 @@ export class AuthenticationService {
     }
   }
 
+  public isTeacher(): boolean {
+    const user = this.getUserDetails();
+    if (user) {
+      return (user.role === 'teacher') && this.isLoggedIn();
+    } else {
+      return false;
+    }
+  }
+
   private request(method: 'post' | 'get', type: 'login' | 'register' | 'profile', user?: TokenPayload): Observable<any> {
     let base;
 
@@ -109,7 +120,7 @@ export class AuthenticationService {
 
   public update(user: UserDetails): Observable<any>{
     let base;
-    console.log(user)
+    // console.log(user)
     base = this.http.post(`/api/update`, user, { headers: { Authorization: `Bearer ${this.getToken()}` } });
     const request = base.pipe(
       map((data: TokenResponse) => {
@@ -120,7 +131,7 @@ export class AuthenticationService {
       })
     );
 
-    return request;
+    return request; 
 
   }
 

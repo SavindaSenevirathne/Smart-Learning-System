@@ -12,21 +12,26 @@ module.exports.register = function (req, res) {
     user.lname = req.body.lname;
     user.email = req.body.email;
     user.regNo = req.body.regNo;
+    user.role= req.body.role;
 
     user.setPassword(req.body.password);
-    console.log('user object = ', user);
+    // console.log('user object = ', user);
     
     user.save(function (err) {
         if(err){
             console.log(err);
-            res.status(500).send
+            res.status(500).json({
+                "message": err
+            });
+        }else{
+            var token;
+            token = user.generateJwt();
+            res.status(200);
+            res.json({
+                "token": token
+            });
+
         }
-        var token;
-        token = user.generateJwt();
-        res.status(200);
-        res.json({
-            "token": token
-        });
     });
 };
 

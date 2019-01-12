@@ -20,6 +20,10 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  role:{
+    type: String,
+    required: true
+  },
   address:{
     type: String,
     required: false
@@ -57,6 +61,7 @@ userSchema.methods.generateJwt = function () {
     fname: this.fname,
     lname: this.lname,
     regNo: this.regNo,
+    role: this.role,
     exp: parseInt(expiry.getTime() / 1000),
   }, "MY_SECRET"); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };

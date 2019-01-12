@@ -1,4 +1,3 @@
-import { environment } from './../environments/environment';
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
@@ -15,12 +14,5 @@ export class AuthGuardService implements CanActivate {
     }
     return true;
   }
-
-  alreadyLoggedIn(){
-    if (this.auth.isLoggedIn()){
-      this.router.navigateByUrl('/dashboard');
-      return true;
-    }
-    return false;
-  }
+  
 }

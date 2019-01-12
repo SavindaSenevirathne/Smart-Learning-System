@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, TokenPayload } from '../authentication.service';
 import { Router } from '@angular/router';
 
-import { NotificationService } from '../notification.service';
+import { NotificationService } from 'app/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   credentials: TokenPayload = {
     regNo: '',
+    role: 'teacher',
     password: ''
   };
 
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/dashboard');
     }, (err) => {
       console.error(err);
+      this.notify.showNotification('danger', err.error.message)
     });
   }
 

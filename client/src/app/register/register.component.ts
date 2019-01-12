@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
     fname: '',
     lname: '',
     regNo: '',
+    role: 'student',
     password: ''
   };
 
@@ -29,6 +30,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigateByUrl('/dashboard');
     }, (err) => {
       console.error(err);
+      this.notify.showNotification('danger', err.message)
     });
   }
 
