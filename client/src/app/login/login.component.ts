@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   login() {
     // console.log(this.credentials);
     this.auth.login(this.credentials).subscribe(() => {
-      this.notify.showNotification('success', 'Successfully Logged In');
+      // this.notify.showNotification('success', 'Successfully Logged In');
       this.router.navigateByUrl('/dashboard');
     }, (err) => {
       console.error(err);

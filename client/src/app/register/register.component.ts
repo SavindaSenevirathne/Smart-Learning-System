@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.auth.register(this.credentials).subscribe(() => {
-      this.notify.showNotification('success', 'Successfully Registered');
+      // this.notify.showNotification('success', 'Successfully Registered');
       this.router.navigateByUrl('/dashboard');
     }, (err) => {
       console.error(err);

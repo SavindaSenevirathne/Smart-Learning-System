@@ -22,7 +22,6 @@ export class CourseComponent implements OnInit {
   allCourses(){
     this.auth.getAllCourses().subscribe(data => {
       this.courses = data
-      console.log(this.courses)
     })
   }
 

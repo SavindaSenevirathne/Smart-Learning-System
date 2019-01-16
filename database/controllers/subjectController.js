@@ -10,7 +10,6 @@ module.exports.newSubject = function (req, res) {
 
     subject.code = req.body.code;
     subject.name = req.body.name;
-
     subject.save(function (err) {
         if (err) {
             console.log(err);
@@ -47,4 +46,34 @@ module.exports.oneSubject = function (req, res) {
         }
         res.status(200).json(subject)
      });
+};
+
+module.exports.oneSubjectNotice = function (req, res) {
+
+    code = req.params.id
+    content = req.body.content
+
+    Subject.findOne({ code: code }, function (err, subject) {
+        if (err) {
+            res.status(500).json({
+                message: "no subject found"
+            })
+        }
+        if (req.body.content) {
+            subject.notice.push({content: req.body.content})
+        }
+
+        subject.save(function (err) {
+            if (err) {
+                console.log(err);
+                res.status(500).json({
+                    "message": err.message
+                });
+            } else {
+                res.status(200).json(subject)
+
+            }
+        });    
+        
+    });
 };

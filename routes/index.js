@@ -28,6 +28,7 @@ router.post('/api/update',auth, Authentication.update);
 router.get('/api/subject/all', auth, subjectControl.allSubjects)
 router.post('/api/subject/new',auth, subjectControl.newSubject)
 router.get('/api/subject/:id', auth, subjectControl.oneSubject)
+router.post('/api/subject/notice/:id', auth, subjectControl.oneSubjectNotice)
 
 
 module.exports = router;

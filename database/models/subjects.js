@@ -10,7 +10,16 @@ var subjectSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true 
-    }
+    },
+    notice:[{
+        content: {
+            type: String
+        },
+        date: {
+            type: Date,
+            default: Date.now
+        }
+    }]
 });
 
 module.exports = subjectSchema;

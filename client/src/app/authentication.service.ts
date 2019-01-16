@@ -191,5 +191,22 @@ export class AuthenticationService {
 
   }
 
+  public putCourseNotice(id, notice: {content: string}): Observable<any> {
+
+    let base;
+    base = this.http.post(`/api/subject/notice/` + id, notice, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
+  }
+
 
 }
