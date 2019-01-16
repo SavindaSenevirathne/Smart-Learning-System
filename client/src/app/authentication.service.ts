@@ -139,5 +139,57 @@ export class AuthenticationService {
     return this.request('get', 'profile');
   }
 
+  // Courses
+  public getAllCourses(): Observable<any> {
+    let base;
+    // console.log(user)
+    base = this.http.get(`/api/subject/all`, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
+  }
+
+  public newCourse(course: { code: string, name: string}): Observable<any> {
+    let base;
+    // console.log(user)
+    base = this.http.post(`/api/subject/new`, course, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
+  }
+
+  public getOneCourses(id): Observable<any> {
+    
+    let base;
+    base = this.http.get(`/api/subject/` + id, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
+  }
+
 
 }

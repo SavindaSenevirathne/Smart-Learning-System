@@ -34,9 +34,15 @@
 
         <form class="login100-form validate-form" (submit) = "register()">
           <span class="login100-form-title">
-            Member Registration
+            {{credentials.role |titlecase}} Registration
           </span>
-
+          <div class="validate-input" data-validate="Valid role is required">
+              <div class="input100" style="padding-left:15px;">
+                <div class="col-md-4" >Role</div>
+                <div class="col-md-4"><input type="radio" value="teacher" name="teacher" [(ngModel)]="credentials.role">Teacher</div>
+                <div class="col-md-4"><input type="radio" value="student" name="student" [(ngModel)]="credentials.role">Student</div>
+            </div>
+          </div>
           <div class="wrap-input100 validate-input" data-validate="Valid name is required">
             <input class="input100" type="text" name="fname" placeholder="First Name" [(ngModel)]="credentials.fname">
             <span class="focus-input100"></span>

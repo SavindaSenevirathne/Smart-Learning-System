@@ -17,10 +17,9 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component'
 
-import { AuthGuardService } from './auth-guard.service' //middleware for secure routes
+import { AuthGuardService } from './auth-guard.service' // middleware for secure routes
 import { NotificationService } from './notification.service'
-import { RoleGuardService } from './role-guard.service';
-
+import { RoleGuardService } from './role-guard.service';// middleware for checking role before allowing
 @NgModule({
   imports: [
     BrowserAnimationsModule,

@@ -15,7 +15,7 @@ export class RoleGuardService implements CanActivate {
       return true;
     } else {
       this.notify.showNotification('danger', 'Unautherized : Login as a teacher to continue')
-      this.router.navigateByUrl('/dashboard');
+      // this.router.navigateByUrl('/dashboard');
       return false;
     }
   }

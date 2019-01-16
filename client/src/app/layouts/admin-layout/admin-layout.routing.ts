@@ -9,11 +9,15 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { RoleGuardService } from 'app/role-guard.service';
+import { CourseComponent } from 'app/course/course.component';
+import { CourseDetailComponent } from './../../course-detail/course-detail.component';
 
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
     { path: 'user',           component: UserComponent },
+    { path: 'courses',        component: CourseComponent},
+    { path: 'courses/:id',    component: CourseDetailComponent},
     { path: 'table',          component: TablesComponent, canActivate:[RoleGuardService] },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },

@@ -18,6 +18,7 @@ var userSchema = new mongoose.Schema({
   },
   regNo:{
     type: String,
+    unique: true,
     required: true
   },
   role:{

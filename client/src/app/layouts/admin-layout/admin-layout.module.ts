@@ -1,3 +1,4 @@
+import { CourseDetailComponent } from './../../course-detail/course-detail.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -16,6 +17,7 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { CourseComponent } from 'app/course/course.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
   ],
   declarations: [
     HomeComponent,
+    CourseComponent,
+    CourseDetailComponent,
     UserComponent,
     TablesComponent,
     TypographyComponent,
