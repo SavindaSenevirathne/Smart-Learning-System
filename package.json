@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "echo 'Error: no test specified'"
+    "test": "mocha --exit"
   },
   "repository": {
     "type": "git",

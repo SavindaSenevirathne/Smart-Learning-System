@@ -15,6 +15,10 @@ var subjectSchema = new mongoose.Schema({
         content: {
             type: String
         },
+        author: {
+            type: String,
+            required:true
+        },
         date: {
             type: Date,
             default: Date.now

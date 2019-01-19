@@ -3,7 +3,6 @@ import { AuthenticationService } from 'app/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { getViewData } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-course-detail',
@@ -18,7 +17,13 @@ export class CourseDetailComponent implements OnInit {
     name: '',
     notice:[{}]
   }
-  newNotice = {content: ''}
+  newNotice = {
+    content: '',
+    author: this.auth.getUserDetails().fname,
+  }
+
+  test = new Date().toISOString()
+
 
   constructor(private route: ActivatedRoute, private location: Location,
     private auth: AuthenticationService, private notify: NotificationService) { }
@@ -42,6 +47,7 @@ export class CourseDetailComponent implements OnInit {
     }
     )
   }
+
 
 
 }
