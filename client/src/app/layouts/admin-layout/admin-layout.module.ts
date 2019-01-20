@@ -1,3 +1,4 @@
+import { QuizComponent } from './../../quiz/quiz.component';
 import { CourseDetailComponent } from './../../course-detail/course-detail.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -38,7 +39,8 @@ import { CourseComponent } from 'app/course/course.component';
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
-    UpgradeComponent
+    UpgradeComponent,
+    QuizComponent
   ]
 })
 

@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 
 import { AuthGuardService } from './auth-guard.service';
 
+
 const routes: Routes =[
   {
     path: '',
@@ -34,7 +35,6 @@ const routes: Routes =[
     path: 'register',
     component: RegisterComponent
   }
-
 ];
 
 @NgModule({
