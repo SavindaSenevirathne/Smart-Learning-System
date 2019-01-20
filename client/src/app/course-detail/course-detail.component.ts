@@ -15,7 +15,7 @@ export class CourseDetailComponent implements OnInit {
   course = {
     code: '',
     name: '',
-    notice:[{}]
+    notice: [{}]
   }
   newNotice = {
     content: '',
@@ -36,7 +36,7 @@ export class CourseDetailComponent implements OnInit {
     this.getEnrollData()
   }
 
-  getData(){
+  getData() {
     this.courseId = this.route.snapshot.paramMap.get('id')
     this.auth.getOneCourses(this.courseId).subscribe(data =>
       this.course = data)
@@ -51,7 +51,7 @@ export class CourseDetailComponent implements OnInit {
       }
 
       )
-    } else{
+    } else {
       this.notify.showNotification('warning', 'Enter a notice first')
     }
   }
@@ -65,6 +65,7 @@ export class CourseDetailComponent implements OnInit {
   accept(regNo){
     console.log(this.course.code + ' ' + regNo);
     this.auth.enrollementAccept({ regNo: regNo, code: this.course.code}).subscribe(() => {
+      this.notify.showNotification('info', 'Accepted')
       this.getEnrollData()
     })
   }
