@@ -34,6 +34,21 @@ var userSchema = new mongoose.Schema({
     default: 'assets/img/faces/default.png',
     required: false
   },
+  courses:[{
+    code:{
+      type: String,
+      required: false
+    },
+    name: {
+      type: String,
+      required: false
+    },
+    status:{
+      type: Boolean,
+      default: false
+    }
+
+  }],
   hash: String,
   salt: String
 });

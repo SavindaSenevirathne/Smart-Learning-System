@@ -10,7 +10,7 @@ import { NotificationService } from 'app/notification.service';
 })
 export class UserComponent implements OnInit {
 
-  userData: UserDetails = {
+  userData = {
     _id: '',
     email: '',
     fname: '',
@@ -20,6 +20,7 @@ export class UserComponent implements OnInit {
     address: '',
     password: '',
     profileImg: '',
+    courses: [{}],
     exp: 0,
     iat: 0
   };
@@ -30,7 +31,7 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.auth.profile().subscribe(data => {
       this.userData = data
-      // console.log(data)
+      console.log(this.userData)
     })
   }
 

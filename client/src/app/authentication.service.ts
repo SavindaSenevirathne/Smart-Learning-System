@@ -208,5 +208,58 @@ export class AuthenticationService {
 
   }
 
+  public enrollementRequest( course: { code: string, name: string }): Observable<any> {
+
+    let base;
+    base = this.http.post(`/api/courseReg/`, course, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
+  }
+
+  public getEnrollData(code): Observable<any> {
+    
+
+    let base;
+    base = this.http.get(`/api/courseReg/all/` + code, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
+  }
+
+  public enrollementAccept(details: { regNo: string, code: string }): Observable<any> {
+
+    let base;
+    base = this.http.post(`/api/courseReg/accept`, details, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
+  }
+
+
 
 }

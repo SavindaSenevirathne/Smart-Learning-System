@@ -22,9 +22,14 @@ describe('Unit tests on User object', function () {
     })
 
     it('Deleting a record',(done)=>{
-        User.deleteOne({email:"test@test.com"},()=>{
-            assert(1===1)
-            done()
+        User.deleteOne({email:"test@test.com"},(err)=>{
+            if(!err){
+                assert(1===1)
+                done()
+            }else{
+                assert(1 === 0)
+                done()
+            }
         })
     })
 })

@@ -22,8 +22,11 @@ router.post('/api/register', Authentication.register);
 
 
 //Secure routes
-router.get('/api/profile',auth, profileControl.profileRead);
-router.post('/api/update',auth, Authentication.update);
+router.get('/api/profile',auth, profileControl.profileRead)
+router.post('/api/update',auth, Authentication.update)
+router.post('/api/courseReg/', auth, Authentication.enrollementRequest)
+router.post('/api/courseReg/accept', auth, Authentication.EnrolleAccept)
+router.get('/api/courseReg/all/:id', auth, Authentication.allEnrolled)
 
 router.get('/api/subject/all', auth, subjectControl.allSubjects)
 router.post('/api/subject/new',auth, subjectControl.newSubject)

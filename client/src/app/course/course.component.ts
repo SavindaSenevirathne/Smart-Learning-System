@@ -13,6 +13,7 @@ export class CourseComponent implements OnInit {
     code: '',
     name: ''
   }
+
   constructor(private auth: AuthenticationService, private notify: NotificationService) { }
 
   ngOnInit() {
@@ -35,6 +36,12 @@ export class CourseComponent implements OnInit {
       console.error(err);
       this.notify.showNotification('danger', err.message)
     });
+  }
+
+  enroll(course){
+    this.auth.enrollementRequest({ code: course.code, name: course.name}).subscribe(() => {
+      this.notify.showNotification('success', 'Successfully requested');
+    })
   }
 
 }

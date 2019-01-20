@@ -22,6 +22,8 @@ export class CourseDetailComponent implements OnInit {
     author: this.auth.getUserDetails().fname,
   }
 
+  enrollUsers = []
+
   test = new Date().toISOString()
 
 
@@ -31,6 +33,7 @@ export class CourseDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getData()
+    this.getEnrollData()
   }
 
   getData(){
@@ -40,12 +43,30 @@ export class CourseDetailComponent implements OnInit {
   }
 
   update() {
-    this.auth.putCourseNotice(this.courseId, this.newNotice).subscribe(() =>{
-      this.newNotice.content = ''
-      this.notify.showNotification('success', 'successfully added')
-      this.getData()
+    if(this.newNotice.content !== ''){
+      this.auth.putCourseNotice(this.courseId, this.newNotice).subscribe(() =>{
+        this.newNotice.content = ''
+        this.notify.showNotification('success', 'successfully added')
+        this.getData()
+      }
+
+      )
+    } else{
+      this.notify.showNotification('warning', 'Enter a notice first')
     }
-    )
+  }
+
+  getEnrollData() {
+      this.auth.getEnrollData(this.courseId).subscribe((data) =>{
+        this.enrollUsers = data
+      })
+  }
+
+  accept(regNo){
+    console.log(this.course.code + ' ' + regNo);
+    this.auth.enrollementAccept({ regNo: regNo, code: this.course.code}).subscribe(() => {
+      this.getEnrollData()
+    })
   }
 
 

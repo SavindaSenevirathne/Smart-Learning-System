@@ -36,6 +36,7 @@
           </div>
           <div class="content">
             <div class="typo-line" *ngFor="let course of courses">
+              <div *ngIf="!auth.isTeacher()"><button type="submit" class="btn btn-info pull-right"  (click)='enroll(course)' style="margin-right:15px">Request Enroll</button></div>
               <a routerLink="/courses/{{course.code}}"><p class="category">{{course.code}}</p><h3>{{course.name}}</h3></a>
             </div>
           

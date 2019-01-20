@@ -112,3 +112,69 @@ module.exports.login = function (req, res) {
     })(req, res);
 
 };
+
+
+module.exports.enrollementRequest = function (req, res) {    
+
+
+    User.findById(req.payload._id, function (err, user) {
+        console.log(req.body);
+        
+        if (err) {
+            res.status(500).json({
+                message: "no user found"
+            })
+        } else {
+            if (req.body.code) {
+                user.courses.push({ code: req.body.code, name: req.body.name})
+            }
+
+            user.save(function (err) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({
+                        message: err.message
+                    });
+                } else {
+                    res.status(200).json({
+                        message: "Successfully requested"
+                    })
+
+                }
+            });
+        }
+
+    });
+};
+
+module.exports.allEnrolled = function (req, res) {
+
+    code = req.params.id
+    User.find({ "courses.code": code, "courses.status": false },function(err,users){
+        if(err){
+            res.status(500).json({
+                message:"error"
+            })
+        }else{
+            res.status(200).json(users)
+        }
+    })
+};
+
+module.exports.EnrolleAccept = function (req, res) {
+    console.log(req.body);
+    regNo = req.body.regNo
+    code = req.body.code
+    
+
+    User.updateOne({ regNo: regNo, 'courses.code': code }, { $set: { "courses.$.status": true } } ,function (err, user) {
+        if (err) {
+            res.status(500).json({                
+                message: "error"
+            })
+        } else {
+            console.log(user.courses);            
+            res.status(200).json(user)
+        }
+    })
+};
