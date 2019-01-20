@@ -20,6 +20,10 @@ import { RegisterComponent } from './register/register.component'
 import { AuthGuardService } from './auth-guard.service' // middleware for secure routes
 import { NotificationService } from './notification.service'
 import { RoleGuardService } from './role-guard.service';// middleware for checking role before allowing
+
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -30,15 +34,18 @@ import { RoleGuardService } from './role-guard.service';// middleware for checki
     FooterModule,
     SidebarModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BsDatepickerModule.forRoot(),
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     LandingComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent 
   ],
+
+ 
   providers: [AuthGuardService, NotificationService, RoleGuardService],
   bootstrap: [AppComponent]
 })
