@@ -23,3 +23,17 @@ module.exports.profileRead = function (req, res) {
     }
 
 };
+
+module.exports.usersOnType = function (req, res) {
+    type = req.params.type
+
+    User.find({ role: type }, (err, users) => {
+        if(err){
+            res.status(500).json({
+                message: err.message
+            })
+        }else{
+            res.status(200).json(users)
+        }
+    })
+}

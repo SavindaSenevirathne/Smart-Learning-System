@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
+  typePassword = 'password'
+
   constructor(private auth: AuthenticationService, private router: Router, private notify: NotificationService) { }
 
   login() {
@@ -31,6 +33,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  togglePassword() {
+    if(this.typePassword === 'password'){
+      this.typePassword = 'text'
+    }else {
+      this.typePassword = 'password'
+    }
+  }
 
 
 }

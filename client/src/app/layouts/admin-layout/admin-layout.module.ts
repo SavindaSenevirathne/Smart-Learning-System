@@ -19,6 +19,7 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { CourseComponent } from 'app/course/course.component';
+import { StudentsComponent } from 'app/students/students.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { CourseComponent } from 'app/course/course.component';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    QuizComponent
+    QuizComponent,
+    StudentsComponent
   ]
 })
 

@@ -45,12 +45,18 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password" [(ngModel)]="credentials.password">
+						<input class="input100" type="{{typePassword}}" name="password" placeholder="Password" [(ngModel)]="credentials.password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
+						<div class="input100" style="padding:0px; padding-top:15px; padding-left:68px">
+							<input type="checkbox" value="show" name="show" style="margin-right:5px;margin-left:10px;" (click)="togglePassword()">Show Password
+							<span class="symbol-input100">
+								<i class="fa fa-eye" aria-hidden="true"></i>
+							</span>
+						</div>
 					
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">

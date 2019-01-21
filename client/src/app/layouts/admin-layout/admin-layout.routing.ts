@@ -12,6 +12,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { RoleGuardService } from 'app/role-guard.service';
 import { CourseComponent } from 'app/course/course.component';
 import { CourseDetailComponent } from './../../course-detail/course-detail.component';
+import { StudentsComponent } from 'app/students/students.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -19,12 +20,12 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user',           component: UserComponent },
     { path: 'courses',        component: CourseComponent},
     { path: 'courses/:id',    component: CourseDetailComponent},
-    { path: 'table',          component: TablesComponent, canActivate:[RoleGuardService] },
+    { path: 'table',          component: TablesComponent},
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent },
     { path: 'quiz/:id',       component:QuizComponent },
+    { path: 'students', component: StudentsComponent, canActivate: [RoleGuardService] }
     
 ];

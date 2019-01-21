@@ -38,5 +38,7 @@ router.post('/api/newNotice', auth, noticeControl.newNotice)
 router.get('/api/getAllNotices', auth, noticeControl.allNotices )
 router.get('/api/deleteNotice/:id', auth, noticeControl.deleteNotice)
 
+router.get('/api/getUser/:type', auth, profileControl.usersOnType)
+
 
 module.exports = router;

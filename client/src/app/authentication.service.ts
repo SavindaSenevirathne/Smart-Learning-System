@@ -311,6 +311,23 @@ export class AuthenticationService {
 
   }
 
+  public getUsers(type: String): Observable<any> {
+    let base;
+    // console.log(user)
+    base = this.http.get(`/api/getUser/` + type, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
+  }
+
 
 
 }

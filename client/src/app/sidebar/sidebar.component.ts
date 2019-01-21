@@ -7,16 +7,18 @@ declare interface RouteInfo {
     title: string;
     icon: string;
     class: string;
+    onlyTeacher: boolean;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'pe-7s-graph', class: '' },
-    { path: '/user', title: 'User Profile', icon: 'pe-7s-user', class: '' },
-    { path: '/courses', title: 'Course List', icon: 'pe-7s-notebook', class: '' },
-    { path: '/table', title: 'Table List',  icon: 'pe-7s-note2', class: '' },
-    { path: '/typography', title: 'Typography',  icon: 'pe-7s-news-paper', class: '' },
-    { path: '/icons', title: 'Icons',  icon: 'pe-7s-science', class: '' },
-    { path: '/maps', title: 'Maps',  icon: 'pe-7s-map-marker', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon: 'pe-7s-bell', class: '' },
+    { path: '/dashboard', title: 'Dashboard',  icon: 'pe-7s-graph', class: '', onlyTeacher:false },
+    { path: '/user', title: 'User Profile', icon: 'pe-7s-user', class: '', onlyTeacher: false  },
+    { path: '/courses', title: 'Course List', icon: 'pe-7s-notebook', class: '', onlyTeacher: false  },
+    { path: '/students', title: 'Student List', icon: 'pe-7s-medal', class: '', onlyTeacher: true },
+    { path: '/table', title: 'Table List', icon: 'pe-7s-note2', class: '', onlyTeacher: true },
+    { path: '/typography', title: 'Typography', icon: 'pe-7s-news-paper', class: '', onlyTeacher: true },
+    { path: '/icons', title: 'Icons', icon: 'pe-7s-science', class: '', onlyTeacher: true  },
+    { path: '/maps', title: 'Maps', icon: 'pe-7s-map-marker', class: '', onlyTeacher: true  },
+    { path: '/notifications', title: 'Notifications', icon: 'pe-7s-bell', class: '', onlyTeacher: true  },
 ];
 
 @Component({
