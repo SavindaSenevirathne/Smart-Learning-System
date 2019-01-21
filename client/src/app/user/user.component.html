@@ -95,11 +95,12 @@
                     </div>
                     <div class="content">
                         <div class="typo-line" *ngFor="let course of userData.courses">
-                            <div *ngIf="course.status == false">
-                                <button class="btn btn-warning pull-right"
-                                    style="margin-right:15px">Pending</button></div>
-                            <div *ngIf="course.status == true">
-                                <button class="btn btn-success pull-right" style="margin-right:15px">Approved</button></div>
+                            <ng-container *ngIf="course.status == false; else elseTemplate">
+                                <button class="btn btn-warning pull-right" style="margin-right:15px">Pending</button>                                
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                                <button class="btn btn-success pull-right" style="margin-right:15px">Approved</button>
+                            </ng-template>                            
                             <a routerLink="/courses/{{course.code}}">
                                 <p class="category">{{course.code}}</p>
                                 <h3>{{course.name}}</h3>

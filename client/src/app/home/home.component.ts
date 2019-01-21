@@ -1,3 +1,5 @@
+import { NotificationService } from 'app/notification.service';
+import { AuthenticationService } from 'app/authentication.service';
 import { Component, OnInit, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import { LocationStrategy, PlatformLocation, Location} from '@angular/common';
 import { LegendItem, ChartType } from '../lbd/lbd-chart/lbd-chart.component';
@@ -35,7 +37,17 @@ export class HomeComponent implements OnInit {
     public activityChartOptions: any;
     public activityChartResponsive: any[];
     public activityChartLegendItems: LegendItem[];
-  constructor() { }
+
+  newNotice = {
+    content: '',
+    author: this.auth.getUserDetails().fname,
+  }
+
+  notices = []
+
+
+
+  constructor(private auth: AuthenticationService, private notify: NotificationService) { }
 
 
   ngOnInit() {
@@ -120,8 +132,38 @@ export class HomeComponent implements OnInit {
 
       // calender
       this.generateCalendar(); 
+      
+      this.getData()
 
     }
+
+  update() {
+    if (this.newNotice.content !== '') {
+      this.auth.putNotice(this.newNotice).subscribe(() => {
+        this.newNotice.content = ''
+        this.notify.showNotification('success', 'successfully added')
+        this.getData()
+      }
+      )
+    } else {
+      this.notify.showNotification('warning', 'Enter a notice first')
+    }
+  }
+
+  getData() {
+    this.auth.getAllNotices().subscribe((data) =>
+      this.notices = data
+    )
+  }
+
+  delete(id) {
+    console.log(id);
+    this.auth.deleteNotice(id).subscribe((notice) => {
+      console.log(notice);      
+      this.getData()
+    })
+    
+  }
 
 
     // For Calender

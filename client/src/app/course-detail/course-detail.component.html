@@ -43,24 +43,32 @@
             <p class="category">for {{course.code}}</p>
           </div>
           <div class="content table-responsive table-full-width">
-            <table class="table table-hover table-striped">
-              <thead>
-                <tr>
-                  <th>id</th>
-                  <th>Registration Number</th>
-                  <th>Name</th>
-                  <th>Enroll</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let user of enrollUsers">
-                  <td>1</td>
-                  <td>{{user.regNo}}</td>
-                  <td>{{user.fname}} {{user.lname}}</td>
-                  <td><button class="btn btn-warning" style="padding:3px 15px;" (click)="accept(user.regNo)">Accept</button></td>
-                </tr>
-              </tbody>
-            </table>
+            <ng-container *ngIf="enrollUsers.length>0; else elseTemplate">
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>Registration Number</th>
+                    <th>Name</th>
+                    <th>Enroll</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of enrollUsers; let i=index">
+                    <td>{{i}}</td>
+                    <td>{{user.regNo}}</td>
+                    <td>{{user.fname}} {{user.lname}}</td>
+                    <td><button class="btn btn-warning" style="padding:3px 15px;" (click)="accept(user.regNo)">Accept</button></td>
+                  </tr>
+                </tbody>
+              </table>              
+            </ng-container>
+            <ng-template #elseTemplate>
+              <div class="header">
+                <p class="category">No enrollements today</p>
+              </div>
+            </ng-template>
+            
         
           </div>
         </div>
@@ -69,15 +77,15 @@
             <div class="content">
               <h3>Link for quiz goes here</h3>
             </div>
-            <!-- <div class="content">
-                      <div class="typo-line" *ngFor="let course of courses">
-                        <a routerLink="/courses/{{course.code}}">
+            <div class="content">
+                      <div class="typo-line">
+                        <a routerLink="/quiz/{{course.code}}">
                           <p class="category">{{course.code}}</p>
-                          <h3>{{course.name}}</h3>
+                          <h3>Quiz 1</h3>
                         </a>
                       </div>
           
-                    </div> -->
+                    </div>
           </div>
           <div class="card">
             <div class="content">
@@ -103,14 +111,13 @@
                     <td>
                       <div class="checkbox">
                         <input id="{{i}}" type="checkbox">
-                        <label for="{{i}}">
-    
+                        <label for="{{i}}">    
                         </label>
                       </div>
                     </td>
-                    <td>{{notice.content}}<hr>
+                    <td>{{notice.content}}<hr   style="margin: 5px 0">
                     <div class="stats">
-                      <i class="fa fa-history"></i> <small>{{test - notice.date}}</small><small class="pull-right">by {{notice.author}}</small>
+                      <i class="fa fa-history"></i> <small>{{notice.date | date:'medium'}}</small><small class="pull-right">by {{notice.author}}</small>
                     </div> </td>
                     <td class="td-actions text-right">
                       <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
@@ -124,12 +131,6 @@
               
                 </tbody>
               </table>
-            </div>
-            <div class="footer">
-              <hr>
-              <div class="stats">
-                <i class="fa fa-history"></i> Updated 3 minutes ago {{test}}
-              </div>
             </div>
           </div>
         </div>

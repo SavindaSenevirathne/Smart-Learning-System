@@ -260,6 +260,57 @@ export class AuthenticationService {
 
   }
 
+  public putNotice(notice: { content: string, author: string }): Observable<any> {
+    let base;
+    // console.log(user)
+    base = this.http.post(`/api/newNotice`, notice, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
+  }
+
+  public getAllNotices(): Observable<any> {
+    let base;
+    // console.log(user)
+    base = this.http.get(`/api/getAllNotices`, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
+  }
+
+  public deleteNotice(id): Observable<any> {
+    let base;
+    // console.log(user)
+    base = this.http.get(`/api/deleteNotice/` + id, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+    const request = base.pipe(
+      map((data: TokenResponse) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
+
+  }
+
 
 
 }
