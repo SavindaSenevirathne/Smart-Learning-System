@@ -1,0 +1,35 @@
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="header">
+						<h4 class="title">Student List</h4>
+						<p class="category">Student details with courses enrolled</p>
+					</div>
+					<div class="content table-responsive table-full-width">
+						<table class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th>No.</th>
+									<th>Registration Number</th>
+									<th>Name</th>
+									<th>Courses Enrolled</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let student of students; let i = index">
+									<td>{{i}}</td>
+									<td>{{student.regNo}}</td>
+									<td>{{student.fname}} {{student.lname}}</td>
+									<td><p *ngFor="let course of student.courses" style="display: inline-block; padding-right: 8px">{{course.code}}</p></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

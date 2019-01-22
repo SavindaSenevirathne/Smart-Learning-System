@@ -1,0 +1,114 @@
+<div class="main-content" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card" style="min-height:350px">
+                    <div class="header">
+                        <h4 class="title">Edit Profile</h4>
+                    </div>
+                    <div class="content" style="height:354px">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Registration Number</label>
+                                        <input type="text" disabled class="form-control" placeholder="Company" name="regNo" [(ngModel)]='userData.regNo'>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" class="form-control" placeholder="Username" value="michael23" name="userName" [(ngModel)]='userData.email'>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]='userData.email'>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control" placeholder="First Name" value="Mike" name="fname" [(ngModel)]='userData.fname'>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" placeholder="Last Name" value="Andrew" name="lname" [(ngModel)]='userData.lname'>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input type="text" class="form-control" placeholder="Home Address" name="address" [(ngModel)]='userData.address'>
+                                    </div>
+                                </div>
+                            </div>                      
+                            <button type="submit" class="btn btn-info btn-fill pull-right" (click)='update()'>Update Profile</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-user">
+                    <div class="image">
+                        <img src="assets/img/back.jpg" alt="..."/>
+                    </div>
+                    <div class="content">
+                        <div class="author">
+                            <a href="#">
+                                <img class="avatar border-gray" src="{{userData.profileImg}}" alt="..."/>
+
+                                <h4 class="title">{{userData.fname}} {{userData.lname}}<br />
+                                    <small>"{{userData.role}}"</small><br> 
+                                    <small>{{userData.regNo}}</small>
+                                </h4>
+                            </a>
+                        </div>
+                        <p class="description text-center"> Email : {{userData.email}}<br>
+                            Address : {{userData.address}}
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="!auth.isTeacher()">
+            <div class="col-md-12">
+                <div class="card" style="min-height:350px">
+                    <div class="header">
+                        <h4 class="title">My Courses</h4>
+                    </div>
+                    <div class="content">
+                        <div class="typo-line" *ngFor="let course of userData.courses">
+                            <ng-container *ngIf="course.status == false; else elseTemplate">
+                                <button class="btn btn-warning pull-right" style="margin-right:15px">Pending</button>                                
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                                <button class="btn btn-success pull-right" style="margin-right:15px">Approved</button>
+                            </ng-template>                            
+                            <a routerLink="/courses/{{course.code}}">
+                                <p class="category">{{course.code}}</p>
+                                <h3>{{course.name}}</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
