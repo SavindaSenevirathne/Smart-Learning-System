@@ -38,8 +38,8 @@ matrix:
       install:
         - npm install
       
-      before_script:
-        - cd client
+      # before_script:
+      #   - cd client
 
       script:
         - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
