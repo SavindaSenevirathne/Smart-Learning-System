@@ -1,13 +1,39 @@
-language: node_js
-node_js: 
-  - "stable"
-cache:
-  directories:
-    - "node_modules"
+matrix:
+  include:
 
-services: mongodb
+    - language: node_js
+      node_js: 
+        - "stable"
+      cache:
+        directories:
+          - "node_modules"
 
-script:
-    - npm run test
-    - cd client
-    
+      services: mongodb
+
+# angular app
+      dist: trusty
+      sudo: false
+
+    - language: node_js
+      node_js:
+        - "8"
+        
+      addons:
+        apt:
+          sources:
+            - google-chrome
+          packages:
+            - google-chrome-stable
+
+      cache:
+        directories:
+          - ./node_modules
+
+      install:
+        - npm install
+      before_script:
+        - cd client
+
+      script:
+        - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+        # - npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
