@@ -24,18 +24,20 @@ matrix:
             - google-chrome
           packages:
             - google-chrome-stable
-
-      before_script:
-        - cd client      
+      
+      before_cache:
+        - cd client
       
       cache:
         directories:
-          - ./node_modules      
+          - ./node_modules    
+      
+      # before_install:
+      #   - cd client
 
       install:
         - npm install
 
       script:
-        - npm install
         - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
         # - npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
