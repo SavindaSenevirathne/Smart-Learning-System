@@ -1,6 +1,9 @@
+import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CourseComponent } from './course.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CourseComponent', () => {
   let component: CourseComponent;
@@ -8,7 +11,7 @@ describe('CourseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseComponent ]
+      declarations: [ CourseComponent ], imports: [FormsModule, RouterTestingModule, HttpClientModule]
     })
     .compileComponents();
   }));

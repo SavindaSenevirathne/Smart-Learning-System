@@ -4,19 +4,22 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine', '@angular/cli'],
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-remap-istanbul'),
-      require('@angular/cli/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma')
     ],
-    files: [
-      
-    ],
-    preprocessors: {
-      './src/test.ts': ['@angular/cli']
+    client: {
+      clearContext: false
     },
+    // files: [
+      
+    // ],
+    // preprocessors: {
+    //   './src/test.ts': ['@angular-devkit/build-angular']
+    // },
     mime: {
       'text/x-typescript': ['ts','tsx']
     },
@@ -35,6 +38,12 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu']
+      }
+    },
     singleRun: false
   });
 };
