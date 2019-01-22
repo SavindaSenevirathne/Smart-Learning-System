@@ -25,13 +25,13 @@ matrix:
           packages:
             - google-chrome-stable
 
+      before_script:
+        - cd client      
+      
       cache:
         directories:
-          - ./node_modules
+          - ./node_modules      
 
-      before_script:
-        - cd client
-        
       install:
         - npm install
 
