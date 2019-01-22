@@ -6,3 +6,8 @@ cache:
     - "node_modules"
 
 services: mongodb
+
+script:
+    - npm run test
+    - cd client
+    
