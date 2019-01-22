@@ -32,11 +32,14 @@ matrix:
         directories:
           - ./node_modules    
       
-      # before_install:
-      #   - cd client
+      before_install:
+        - cd client
 
       install:
         - npm install
+      
+      before_script:
+        - cd client
 
       script:
         - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
