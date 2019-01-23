@@ -8,11 +8,11 @@ import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
-import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { RoleGuardService } from 'app/role-guard.service';
 import { CourseComponent } from 'app/course/course.component';
 import { CourseDetailComponent } from './../../course-detail/course-detail.component';
 import { StudentsComponent } from 'app/students/students.component';
+import { MyCoursesComponent } from 'app/my-courses/my-courses.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -26,6 +26,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'quiz/:id',       component:QuizComponent },
-    { path: 'students', component: StudentsComponent, canActivate: [RoleGuardService] }
+    { path: 'students', component: StudentsComponent, canActivate: [RoleGuardService] },
+    { path: 'myCourses', component: MyCoursesComponent}
     
 ];

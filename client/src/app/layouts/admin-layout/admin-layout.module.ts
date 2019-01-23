@@ -20,6 +20,7 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { CourseComponent } from 'app/course/course.component';
 import { StudentsComponent } from 'app/students/students.component';
+import { MyCoursesComponent } from 'app/my-courses/my-courses.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { StudentsComponent } from 'app/students/students.component';
     NotificationsComponent,
     UpgradeComponent,
     QuizComponent,
-    StudentsComponent
+    StudentsComponent,
+    MyCoursesComponent
   ]
 })
 

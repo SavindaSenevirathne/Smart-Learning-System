@@ -19,7 +19,7 @@
 							</thead>
 							<tbody>
 								<tr *ngFor="let student of students; let i = index">
-									<td>{{i}}</td>
+									<td>{{i+1}}</td>
 									<td>{{student.regNo}}</td>
 									<td>{{student.fname}} {{student.lname}}</td>
 									<td><p *ngFor="let course of student.courses" style="display: inline-block; padding-right: 8px">{{course.code}}</p></td>

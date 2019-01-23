@@ -24,10 +24,7 @@ matrix:
             - google-chrome
           packages:
             - google-chrome-stable
-      
-      before_cache:
-        - cd client
-      
+          
       cache:
         directories:
           - ./node_modules    
@@ -37,9 +34,6 @@ matrix:
 
       install:
         - npm install
-      
-      # before_script:
-      #   - cd client
 
       script:
         - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI

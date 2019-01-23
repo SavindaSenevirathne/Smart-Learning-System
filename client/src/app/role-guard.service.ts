@@ -9,7 +9,7 @@ export class RoleGuardService implements CanActivate {
   constructor(private auth: AuthenticationService, private router: Router, private notify: NotificationService) { }
 
   canActivate() {
-    
+
     if (this.auth.isTeacher()) {
       console.log('can go ahead as teacher')
       return true;

@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class HelperService {
   static toBool(val) {
-    if (val == 'undefined' || val == null || val == '' || val == 'false' || val == 'False')
+    if (val === 'undefined' || val === null || val === '' || val === 'false' || val === 'False') {
       return false;
-    else // if (val == true || val == 'true' || val == 'True')
+
+    } else // if (val == true || val == 'true' || val == 'True')
+    {
       return true;
+    }
   };
+
   static shuffle(array) {
-    var currentIndex = array.length, temp, randomIndex;
+    let currentIndex = array.length, temp, randomIndex;
 
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -24,13 +28,16 @@ export class HelperService {
   static extend(out) {
     out = out || {};
 
-    for (var i = 1; i < arguments.length; i++) {
-      if (!arguments[i])
-        continue;
+    for (let i = 1; i < arguments.length; i++) {
+      if (!arguments[i]) {
 
-      for (var key in arguments[i]) {
-        if (arguments[i].hasOwnProperty(key))
+        continue;
+      }
+
+      for (let key in arguments[i]) {
+        if (arguments[i].hasOwnProperty(key)) {
           out[key] = arguments[i][key];
+        }
       }
     }
     return out;
