@@ -39,9 +39,7 @@
                   [chartOptions]="activityChartOptions"
                   [chartResponsive]="activityChartResponsive"
                   [legendItems]="activityChartLegendItems" 
-                  [withHr]="true"
-                  [footerIconClass]="'fa fa-check'"
-                  [footerText]="'Data information certified'">
+                  [withHr]="true">
                 </lbd-chart>
             </div>
             <div class="col-md-6">
@@ -79,23 +77,18 @@
                                         <div class="week-date disabled" *ngIf="!isSelectedMonth(day.mDate)">
                                           <span class="date-text">{{ day.mDate.date() }}</span>
                                         </div>
-                                        <div class="week-date enabled"
+                                        <div class="week-date enabled "
                                              *ngIf="isSelectedMonth(day.mDate)"
                                              (click)="selectDate(day)"
                                              [ngClass]="{ today: day.today, selected: day.selected }">
-                                          <span class="date-text">{{ day.mDate.date() }}</span>
+                                          <span class="date-text p">{{ day.mDate.date() }}</span>
                                         </div>
                                       </ng-container>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              
-                              
-                              <div>
-                                  <a routerLink="/quiz"><button class="button">Quiz</button></a>
-                              </div>
-                              <!-- <router-outlet></router-outlet> -->
+                            
                               
 
                                 <!--End calender  -->
