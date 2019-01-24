@@ -87,28 +87,5 @@
                 </div>
             </div>
         </div>
-        <div class="row" *ngIf="!auth.isTeacher()">
-            <div class="col-md-12">
-                <div class="card" style="min-height:350px">
-                    <div class="header">
-                        <h4 class="title">My Courses</h4>
-                    </div>
-                    <div class="content">
-                        <div class="typo-line" *ngFor="let course of userData.courses">
-                            <ng-container *ngIf="course.status == false; else elseTemplate">
-                                <button class="btn btn-warning pull-right" style="margin-right:15px">Pending</button>                                
-                            </ng-container>
-                            <ng-template #elseTemplate>
-                                <button class="btn btn-success pull-right" style="margin-right:15px">Approved</button>
-                            </ng-template>                            
-                            <a routerLink="/courses/{{course.code}}">
-                                <p class="category">{{course.code}}</p>
-                                <h3>{{course.name}}</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
