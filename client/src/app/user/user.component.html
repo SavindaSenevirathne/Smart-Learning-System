@@ -61,7 +61,7 @@
             <div class="col-md-4">
                 <div class="card card-user">
                     <div class="image">
-                        <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                        <img src="assets/img/back.jpg" alt="..."/>
                     </div>
                     <div class="content">
                         <div class="author">
@@ -83,28 +83,6 @@
                         <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
                         <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
                         <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" *ngIf="!auth.isTeacher()">
-            <div class="col-md-12">
-                <div class="card" style="min-height:350px">
-                    <div class="header">
-                        <h4 class="title">My Courses</h4>
-                    </div>
-                    <div class="content">
-                        <div class="typo-line" *ngFor="let course of userData.courses">
-                            <div *ngIf="course.status == false">
-                                <button class="btn btn-warning pull-right"
-                                    style="margin-right:15px">Pending</button></div>
-                            <div *ngIf="course.status == true">
-                                <button class="btn btn-success pull-right" style="margin-right:15px">Approved</button></div>
-                            <a routerLink="/courses/{{course.code}}">
-                                <p class="category">{{course.code}}</p>
-                                <h3>{{course.name}}</h3>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>

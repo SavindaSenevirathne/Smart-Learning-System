@@ -88,7 +88,16 @@
                                   </div>
                                 </div>
                               </div>
+<<<<<<< HEAD
                             
+=======
+                              
+                              
+                              <!-- <div>
+                                  <a routerLink="/quiz"><button class="button">Quiz</button></a>
+                              </div> -->
+                              <!-- <router-outlet></router-outlet> -->
+>>>>>>> 3a2ffb5884cf81cf7eb906d4e0bdc203277b47d4
                               
 
                                 <!--End calender  -->
@@ -101,29 +110,37 @@
             </div>
         </div>
         <div class="row">    
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="header">
                         <h4 class="title">NOTICE BOARD</h4>
-                        <p class="category">Backend development</p>
+                        <p class="category">General Notices in the faculty</p>
+                        <!-- <div class="checkbox pull-left">
+                            <input id="id" type="checkbox" class="pull-right">
+                            <label for="id" class="pull-right">
+                                Check All
+                            </label>
+                        </div> -->
                     </div>
                     <div class="content">
                         <div class="table-full-width">
                             <table class="table">
                                 <tbody>
-                                    <tr>
-                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                        <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                <i class="fa fa-times"></i>
-                                            </button>
+                                    <tr *ngFor="let notice of notices.reverse(); let i = index">
+                                        <td>
+                                            <div class="checkbox">
+                                                <input id="{{i}}" type="checkbox">
+                                                <label for="{{i}}">                                    
+                                                </label>
+                                            </div>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                        <td>{{notice.content}}
+                                            <hr  style="margin: 5px 0">
+                                            <div class="stats">
+                                                <i class="fa fa-history"></i> <small>{{notice.date | date:'medium'}}</small><small class="pull-right">by
+                                                    {{notice.author}}</small>
+                                            </div>
+                                        </td>
                                         <td class="td-actions text-right">
                                             <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                 <i class="fa fa-edit"></i>
@@ -136,12 +153,33 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="footer">
-                            <hr>
-                            <div class="stats">
-                                <i class="fa fa-history"></i> Updated 3 minutes ago
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" *ngIf="auth.isTeacher()">
+                    <div class="header">
+                        <h4 class="title">Add new Notice</h4>
+                    </div>
+                    <div class="content">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Content</label>
+                                        <input type="text" class="form-control" placeholder="Content goes here" name="newNotice"
+                                            [(ngModel)]="newNotice.content" required>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <button type="submit" class="btn btn-info btn-fill pull-right" (click)='update()' style="margin-right:15px">Add
+                                    Notice</button>
+                            </div>
+                        </form>
+        
                     </div>
                 </div>
             </div>

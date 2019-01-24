@@ -15,7 +15,7 @@ export class CourseDetailComponent implements OnInit {
   course = {
     code: '',
     name: '',
-    notice:[{}]
+    notice: [{}]
   }
   newNotice = {
     content: '',
@@ -24,7 +24,6 @@ export class CourseDetailComponent implements OnInit {
 
   enrollUsers = []
 
-  test = new Date().toISOString()
 
 
   constructor(private route: ActivatedRoute, private location: Location,
@@ -36,35 +35,34 @@ export class CourseDetailComponent implements OnInit {
     this.getEnrollData()
   }
 
-  getData(){
+  getData() {
     this.courseId = this.route.snapshot.paramMap.get('id')
     this.auth.getOneCourses(this.courseId).subscribe(data =>
       this.course = data)
   }
 
   update() {
-    if(this.newNotice.content !== ''){
-      this.auth.putCourseNotice(this.courseId, this.newNotice).subscribe(() =>{
+    if ( this.newNotice.content !== '') {
+      this.auth.putCourseNotice(this.courseId, this.newNotice).subscribe(() => {
         this.newNotice.content = ''
         this.notify.showNotification('success', 'successfully added')
         this.getData()
       }
-
       )
-    } else{
+    } else {
       this.notify.showNotification('warning', 'Enter a notice first')
     }
   }
 
   getEnrollData() {
-      this.auth.getEnrollData(this.courseId).subscribe((data) =>{
+      this.auth.getEnrollData(this.courseId).subscribe((data) => {
         this.enrollUsers = data
       })
   }
 
-  accept(regNo){
-    console.log(this.course.code + ' ' + regNo);
+  accept(regNo) {
     this.auth.enrollementAccept({ regNo: regNo, code: this.course.code}).subscribe(() => {
+      this.notify.showNotification('info', 'Request accepted')
       this.getEnrollData()
     })
   }
